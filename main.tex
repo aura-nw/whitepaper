@@ -1,0 +1,110 @@
+\documentclass[12pt]{article}
+
+% Language setting
+\usepackage[english]{babel}
+
+% Page format
+\usepackage[a4paper]{geometry}
+\linespread{1.5} 
+
+% Header
+\usepackage{fancyhdr}
+\addtolength{\headheight}{1.5cm} % make more space for the header
+\pagestyle{fancyplain} % use fancy for all pages except chapter start
+\fancyhf{} % clear header text chapter
+\rhead{\includegraphics[height=1.3cm]{img/logo.png}} % right logo
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt} % remove rule below header
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{draftwatermark}
+
+% Fix too long hyperlinks in bibliography
+\usepackage{url}
+\def\UrlBreaks{\do\/\do-}
+
+\title{Aura Network: a modern NFT-centric blockchain platform}
+\author{admin@aura.network}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% \begin{abstract}
+% Your abstract.
+% \end{abstract}
+
+\section{Context}
+
+Cryptocurrencies (crypto) are becoming more and more popular by the day. Since the birth of Bitcoin in 2009, the crypto market has grown to thousands of billions US dollars in size. The success of crypto projects brings more innovations to the blockchain ecosystem. Recently, the hot topic of Non-Fungible Token (NFT) is an ideal case study of how blockchain technology is changing the world.
+
+\subsection{NFT overview}
+NFT origin can be traced back to the ERC-721 Ethereum token standard \cite{entriken2018erc}. A NFT is a distinguishable token that can be owned and transacted by individuals. 
+Given an asset, either digitized or physical one, we can issue a NFT that embed the asset metadata including name, description and images to represent the ownership of the NFT creator to such asset. As this ownership relation can be freely traded in the market and the uniqueness property of the token, NFT investment is becoming widely popular. By the last quarter of 2021, the NFT sales world wide has surged to \$ 10.5 Billion \cite{nftsale}. Among the popularity of NFT, there are 6 main categories:
+
+\begin{enumerate}
+\item Collectibles: Due to the fact that NFT is unique, the possessions of special NFT is a natural demand for collectors. Some of the most well known NFT collectibles are CryptoPunks \cite{cryptopunks}, Bored Ape Yacht Club \cite{bayc}. Basically, any NFT can be considered collectibles. However, some have other usages in other categories as well. Currently, collectibles market value is at \$ 5.7 Billion, accounting for more than half of the whole NFT market.
+\item Game: In-game assets can be represented as NFT. This unique interaction enables a new decentralized gaming trend of "play-to-earn" where players can obtain NFTs from the game then later sells it on the crypto market. Since May 2021, the Pokemon-inspired crypto game Axie Infinity \cite{axie} has rapidly gained attraction and currently provides one of the most valuable NFT collection in the world.
+\item Art: Another form of collectibles NFT is digital art. NFT provides a new way for artists to increase the digital art value as it is truly unique. While the product itself can be easily copied, screen captured without permission, the origin of the art and it's owner cannot. The digital artwork "Everydays: the First 5000 Days" by Beeple is a collage of 5000 images created daily by the artist in the last 13 years \cite{beeple}. The work NFT was sold for \$69 million to a crypto investor in early 2021 and is the most expensive NFT to date. Besides traditional digital arts, website likes ArtBlock \cite{artblock} provides a programmable interface to allow artists to randomly generate unique images in their respective styles and tokenize them into NFTs. 
+\item DeFi: As NFT is becoming valuable, its liquidity grows. Gradually, NFT is making its way into decentralized financial solutions. nftfi \cite {nftfi} offers a platform for NFT collateralise loans. Some NFT games like Cometh \cite{cometh} intelligently integrates token swap inside the token economy and gained a lot of attraction from the crypto community.  
+\item Metaverse: with the rise of NFT and the recent announcements of big tech companies like Meta \cite{facebook}, Microsoft \cite{microsoft}, Metaverse NFT has gradually becoming the new trend of the crypto community. Pioneer projects such as Decentraland \cite{decentraland} and The Sandbox \cite{sandbox} allow users to create and share their own 3D objects with each other. These objects can be avatars, animal, land, real estate, etc. 
+\item Other Utility: Outside of gaming, NFT can also be used for other utility purpose. Using Domain names NFT service like Ethereum Name Service \cite{ens}, users can register for ``.eth" Internet domains. VeeFriends \cite{vee} from Gary Vaynerchuk allows NFT holders to join Veecon, an exclusive conference for Gary community.
+\end{enumerate}
+
+\begin{figure}[ht]
+\label{fig:nftsale}
+\includegraphics[width=14cm]{img/nftchart.png}
+\centering
+\caption{NFT Market value by categories in 2021 \cite{nftsale}}
+\end{figure}
+
+Figure \ref{fig:nftsale} shows the sale value of NFT in 2021 by these categories. We can see that most of the market value are around collectibles (\$ 5.7 Billion) and arts (\$ 1.9 Billion). While this is a good sign to show the appreciation for NFT and the accessible of the technology, we can expect more use cases for NFT in the future. NFT enables scarcity, uniqueness and proof of ownership to any unique asset in a decentralized way, not only digital items. Thus, they can be used to pretty much anything in the world, even in the physical world. 
+
+\subsection{Challenges}
+What will the future look like for NFT ? The technology is growing beyond simple collectibles or arts towards a much more diverse use of NFTs in finance, gaming, real estate, metaverse, etc. Every asset, digital or physical one, can have its own unique representation in the decentralized blockchain ecosystem and can be transacted without restriction. However, to enable that future, we will have to overcome several key challenges with the technology: usability, regulation and interoperability.
+
+\emph{Usability} is a key factor to almost all software products that end users interact with. While NFT is just a token standard, the actual NFT object is owned, transacted by end users through various decentralized applications (DApps). Most of the current NFT scheme are based on Ethereum, thus they inherit drawbacks from the Ethereum network as well. The confirmation time is slow, Ethereum 1 has around 15-30 transaction per second (TPS), which is extremely slow for global scale DApps. Gas price is also extremely high especially when to mint new NFTs or upload metadata to the blockchain. Ethereum 1 carbon footprint is also very high due to the use of proof-of-work algorithm. These problems limit the utility of NFTs to use cases that concern only high value items rather than for everything. The tech community has been working actively in this problem for years. Ethereum 2 upgrade promises a more scalable and sustainable ecosystem. However, it is still a long way until all the upgrades are in place. Alternatively, other blockchains with much better usability are emerge. Flow is a new blockchain platform, originated from developers who built created CryptoKitties. Flow focuses on applications, games and digital assets. Binance Smart Chain (BSC) also supports NFT through the BEP-721 token standard. While non of the alternative choices is as popular as Ethereum, these blockchain platforms offer much better user experience and are more suitable for different use cases. 
+
+Similar to any cryptocurrency scheme, \emph{regulation} is another major concern of NFT. Legally speaking, not all countries support the use and trade of NFT. Owning an NFT does not explicitly grant the owner any copyright or lawful enforcement over the real asset. Thus, investing serious tokens in NFT is not as easy as it look. For assets like books, arts, real life assets, they are taxable properties while their NFTs are not. It is unclear in the future whether NFT or any profit from NFT trading can be taxed or not.
+
+Finally, there is little interoperability among different NFT ecosystems. There is currently no way to directly transmit an NFT from Ethereum to BSC yet. While cross-chain communications are blooming, it is still some time before we can see all of these advancements work with NFT. While the major NFT schemes are concentrated in Ethereum, this problem prevents the wide adoption of the technology to other blockchain platform.
+
+\section{Introducing Aura Network}
+Given all of the challenges above, we introduce \emph{Aura Network}, a NFT-centric blockchain platform that focus on expanding the use of NFT across various industries. Our vision is to create an one-stop destination for minting, evaluating, querying and transacting NFT, to become a pioneer NFT infrastructure for the future. Aura Network focuses on solving the 3 challenges of \emph{usability}, \emph{regulation} and \emph{interoperability} of the current NFT market.
+
+This section provides a high level view of 3 main aspects of Aura Network: an universal framework for managing NFT, a multi-chain solution to expand the use of NFT and a NFT infrastructure for the metaverse.
+
+\subsection{Universal framework for NFT}
+
+
+\subsection{Expanding Blockchain Network}
+Standing beside the success of crypto projects, private blockchain projects are slowly gaining attractions. Private, consortium or permissioned blockchain often refer to systems that consist of one or several authorized parties that create a blockchain network for specific business purposes. Imagine a group of companies who want to create a distributed network for transparently exchanging assets, tracking items or sharing documents. Unlike its counterpart, private blockchain is more appealing for companies, enterprises or governments as they are easier to control and do not require volatile currencies to operate.
+
+With multiple blockchains coexisting, cross-chain communication solutions emerge. Atomic swap, cross chain messages are all examples of the capability to link different blockchains together to create a more cohesive ecosystem that benefits everyone. Different types of blockchain, public or private, can benefit from those solutions tremendously. 
+
+For private blockchains, cross chain communication brings out the most potential of the technology. Typically, enterprises or businesses are main adopters of private blockchain as they  require more control over the network. By having a route to the public side, businesses now have access to a market of millions users and billions USD worth of values circulating every day. This increases liquidity on private networks massively and enables many other use cases that a single blockchain network can not achieve. In turn, the cryptocurrency side also has more channels to approach real world problems that businesses are dealing with in their private blockchain setup. 
+
+However, the majority of businesses are still not familiar with this kind of approach. It is difficult for enterprises to adopt cryptocurrencies due to unclear regulation in most countries.There are not many best practices in bridging an existing enterprise blockchain network to the public side both in terms of technology and meaningful business workflow. Blockchain DAPPs are often having poor UX with over complicated key management features that are not easy to be accepted by the general public, etc. 
+
+\subsection{Towards the metaverse}
+
+\section{Architecture}
+
+\subsection{Blockchain Platform}
+
+\subsection{Eco System}
+
+\subsection{Mapping Real life Assets}
+
+
+\section{Tokenomics}
+
+\section{Roadmap}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
