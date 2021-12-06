@@ -78,9 +78,34 @@ Given all of the challenges above, we introduce \emph{Aura Network}, a NFT-centr
 This section provides a high level view of 3 main aspects of Aura Network: an universal framework for managing NFT, a multi-chain solution to expand the use of NFT and a NFT infrastructure for the metaverse.
 
 \subsection{Universal framework for NFT}
+The original token standard ERC-721 and ERC-1155 laid a foundation for NFT standard interfaces. However, how these tokens are created and used in DApps are not standardized yet. This allows developers to have more room for creativity. Wang et al. \cite{wang2021non} summarized two popular protocols for managing NFT in DApps:
+\begin{enumerate}
+\item \textbf{Top to Bottom:} where an owner creates the asset, mints the NFT token that represent the asset and trade it with others through the $transferFrom$ function. This pattern is used in CryptoPunks \cite{cryptopunks}, Beeple's Everydays \cite{beeple}, etc.
+\item \textbf{Bottom to Top:} where the DApp creates a NFT template that allows users to invoke and create their own unique NFT based on that template. This is used in platform generated NFT such as artblock \cite{artblock} and NFT game like Axie Infinity \cite{axie}.
+\end{enumerate}
 
+Most of the functions from these two protocols are concerning either the NFT creator and buyer. There might be other stake holders in the protocol such as the DApp creator and the exchange marketplace. These are suitable for simple digital items and simple use cases. However, if we are targeting a vastly broad NFT market that involve not only collectibles and digital items but also physical assets, comprehensive digital contracts, etc., there are more parties involve. We now give an example of possible important stakeholders that may appear in such market:
 
-\subsection{Expanding Blockchain Network}
+\begin{enumerate}
+    \item \textbf{Custodian:} Similar to the term in banking, a custodian bank is a financial service provider that hold customer's assets for safekeeping. While "Not your keys, not your coins" is widely accepted in the blockchain community, Coinbase and various banks around the world are offering high quality custodian services for crypto assets. They provide cold storage, security controls and even insurance plan for protecting cryptocurrencies. This practice is also long established for physical assets as well. Keeping authorized papers, will or high value items like jewels, antiques are very common for custodian services.
+    
+    To NFT users, custodians can offer safekeeping physical items in their safe vaults and only allow user to redeem those items if they own the NFT. If NFT provides a way to prove the ownership of an asset, we can also expect custodian to prove that they are, in deed, holding the corresponding physical item in their safe vaults by an on-chain transaction.
+    
+    \item \textbf{Auditor:} In finance, an auditor refers to the person that is authorized to verify the correctness of financial documents and whether they comply with regulation. In security, auditors conduct reviews and make sure the system is protected from common threats. In a lot of case, the asset owner, buyer or the exchange do a part of the auditor job such as KYC, proving the legitimacy of papers with records, bills, etc. However, in the case of issuing NFT for high value items like real estate, having a third party auditor brought in to certify the legitimacy of the asset as well as the right to sell of the owner will definitely increase the trust of the buyer and value of the item.
+    
+    \item \textbf{Evaluator:} In the real estate industry, property or land valuation is often a required procedure to give an estimation of market value to the property. Diamonds are evaluated based on their quality factors in clarity, color, cut, and Carat Weight. The valuation process mostly conducted professionally and can give a relatively correct value of an asset rather than subjective opinion. Similarly, NFTs of valuable assets can also be evaluated in a lot of criteria: the origin of the asset, level of granted permission, market price of similar items or depending on the utility of the NFT.
+    
+    \item \textbf{Asset Manager:} With items that have high utility such as cars, real estate, a local manager who keep tracks of utility usage of the item greatly benefits the community. Real estate companies often have house managing companies to do house maintenance, screening tenants or collecting rents. If NFT can represent the ownership of a real estate, the NFT owner not only should have all documentations relating to the properties, but also can get local asset managers on board to do all the manual work for them later on. 
+    
+    \item \textbf{Investor:} Another new use case of NFT is to fractionize the NFT to allow multiple investors to co-invest in the item. This fractional ownership adds new ways for integrating NFT with DeFi scheme such as Uniswap as each fraction is fungible. Thus, multiple investors can pool up and join the NFT investment game.
+\end{enumerate}
+
+Custodian, auditor, evaluator, asset manager and investors are just some sample of possible stakeholders that are needed in the NFT market. We have seen some use cases that require those parties. However, a complete platform that allows all of them to work together on-chain is unheard. This is why we create Aura Network.    
+
+\subsection{Connecting to Blockchain Network}
+
+With the success of Bitcoin, Ethereum, Cardano and others, there are a lot of layer 1  
+
 Standing beside the success of crypto projects, private blockchain projects are slowly gaining attractions. Private, consortium or permissioned blockchain often refer to systems that consist of one or several authorized parties that create a blockchain network for specific business purposes. Imagine a group of companies who want to create a distributed network for transparently exchanging assets, tracking items or sharing documents. Unlike its counterpart, private blockchain is more appealing for companies, enterprises or governments as they are easier to control and do not require volatile currencies to operate.
 
 With multiple blockchains coexisting, cross-chain communication solutions emerge. Atomic swap, cross chain messages are all examples of the capability to link different blockchains together to create a more cohesive ecosystem that benefits everyone. Different types of blockchain, public or private, can benefit from those solutions tremendously. 
