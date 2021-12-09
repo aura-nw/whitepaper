@@ -21,6 +21,7 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{draftwatermark}
+\usepackage[table,xcdraw]{xcolor}
 
 % Fix too long hyperlinks in bibliography
 \usepackage{url}
@@ -148,9 +149,17 @@ Figure \ref{fig:architecture} shows the high level architecture of the Aura bloc
 The consensus engine is \emph{Tendermint}~\cite{buchman2016tendermint}, a Byzantine Fault Tolerance state machine replication engine while he Proof-of-Stake (PoS) logic layer is provided by the Cosmos SDK. 
 
 \subsubsection*{aurad}
-\emph{aurad}, short form of ``Aura Daemon" refers to the compiled platform binary that runs on all Validator nodes. The  
+\emph{aurad}, short form of ``Aura Daemon" refers to the compiled platform binary that runs on all Validator nodes. aurad contains standard Cosmos modules like \emph{Auth}, \emph{Bank}, \emph{Mint}, \emph{Slash}, \emph{Stake}, etc.that are required to run the blockchain platform. There are a few simple modifications such as adding parameters and specific business logic that may be required by the Aura tokenomics. But overall, there won't be much change from the provided modules from Cosmos.
 
-\subsection{Eco System}
+\subsubsection*{CosmWasm}
+CosmWasm stands for ``Cosmos WebAssembly", it's a Cosmos module that enables WebAssembly virtual machines in the cosmos SDK. As the smart contract written for CosmWasm is compatible with all other blockchain based on Cosmos, we choose CosmWasm as the middleware for building smart contracts and DApps for the Aura ecosystem. Currently it only support contract written in \emph{Rust}, but many high level programming languages can be added in the future.
+
+\subsubsection*{Bridge}
+Bridge is also an important part of aurad. As Aura Network focuses on bridging assets to other blockchains even outside of the Cosmos SDK, bridge modules that support  Inter-Blockchain Communication Protocol (IBC) are the best way of doing this. Currently, there is already \emph{Gravity} bridge that connect Cosmos-based blockchain to Ethereum. We also see that IBC bridge is in development for other blockchains, including private ones like Hyperledger Fabri, a more popular choices for building consortium blockchain in enterprises. 
+
+\subsection{Aura Network ecosystem}
+Figure~\ref{fig:architecture} shows the potential building blocks of the Aura Network. At the moment, we divide the ecosystem into 6 main categories
+
 \begin{figure}[ht]
 \label{fig:auraeco}
 \includegraphics[width=14cm]{img/auraeco.png}
@@ -158,12 +167,83 @@ The consensus engine is \emph{Tendermint}~\cite{buchman2016tendermint}, a Byzant
 \caption{The Aura eco-system}
 \end{figure}
 
-\subsection{Mapping Real life Assets}
+\subsubsection*{Infrastructure}
+The Infrastructure layer mostly refers to the blockchain platform that is mentioned above. Other than validators, Cosmos and Tendermint best practices in running production software also include Seed, Sentry, Full and Light node. Details on the setup of these nodes are described in the Cosmos SDK documentation. We will also provide scripts and instruction on how to setup different types of node later on through Aura development documents.
 
+\subsubsection*{Middleware}
+The middleware layer contains Cosmos modules bundled together with aurad. As mentioned, most of the provided Cosmos modules are included. The Aura team also publishes modification to these modules in the development docs as well.
+
+\subsubsection*{Smart Contract}
+Smart contract layer contains smart contracts written in Rust, compiled and ran on the CosmWasm module.
+
+\subsubsection*{Decentralized App}
+Decentralized Applications (DApps) are the main focus of the Aura Network. All business solutions are written here such as: NFT Asset Management, Wallet, NFT Issuer, NFT evaluation, Exchange, Launchpad, Marketplace, etc. As Aura Network focuses on NFT businesses, the Aura team will take the lead in developing these DApps to attract all types of stakeholders as mentioned in the introduction section.
+
+\subsubsection*{Connector}
+Connector layer contains integration APIs, SDKs that are used to bring NFT assets to Metaverse networks. By itself, Aura Network does not provide a metaverse experience, but to provide infrastructures for bringing NFT assets to the metaverse.
+
+\subsubsection*{Support Tools}
+This layer contains usual software tools that are mandatory to the Aura blockchain platform. That contains blockchain explorer, low code software development, development tools, OpenAPI and Governance tools.
 
 \section{Tokenomics}
 
-\section{Roadmap}
+This section describes information related to native currency supported by the Aura Network.
+
+\subsection{Token Usage}
+We introduce 2 types of native tokens in the Aura Network: the Aura Token on Ethereum and Aura Coin. Both actually refers to the same unit.
+
+\begin{enumerate}
+    \item Aura Token on ETH: To launch Aura Network, we first introduce the ERC-20 Aura Token on Ethereum. This token only acts as a place holder for the later Aura Coin that will be introduced when Aura Mainnet launches. Like other ERC-20 tokens, Aura Token can be traded on the cryptocurrency market until Aura Coin is introduced.
+    \item Aura Coin: Aura Coin is the native currency of the Aura Network blockchain platform. Besides the trading capability of Aura Token, Aura Coin has many other utilities:
+
+    \textbf{Staking}: Aura Coin holder can delegate their coins to trusted validators to earn passive commission income from the network.
+    
+    \textbf{Governing}: Aura Coin holder can participate in voting for software updates or other important decisions of how the Aura community should be developed.
+    
+    \textbf{Transaction fee}: Aura Coin is used to pay for transaction fee.
+    
+    \textbf{Exchange and Swap}: Aura Coin can be exchange or swap in the market
+    
+    \textbf{Payment for Utility Services}: As Aura focuses on bringing real world assets and different stakeholders to the ecosystem to offer business services, Aura Coin can be used for payment for these utility services. Aura holders can vote to choose their service providers (evaluator, auditor, etc.) and use Aura to pay for their services.
+\end{enumerate}
+
+As the Aura Token is just a temporary placeholder for the Aura coin, we expect a transition period where one can ``convert" their token on ETH to receive their corresponding amount of Aura coin on the Aura main network. After receiving Aura coin, Aura Token will be burnt.
+
+\subsection{Token Distribution}
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[ht]
+\label{table:tokenomics}
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+\rowcolor[HTML]{343434} 
+{\color[HTML]{FFFFFF} Token Allocation} & {\color[HTML]{FFFFFF} Allocation (\%)} & {\color[HTML]{FFFFFF} AURA} & {\color[HTML]{FFFFFF} TGE (\%)} & {\color[HTML]{FFFFFF} Vesting Schedule}          \\ \hline
+Ecosystem Growth                        & 20                                     & 200M                        & 50                              & Linear vesting over 2 years                      \\ \hline
+Strategic                               & 20                                     & 200M                        & 0                               & Linear vesting over 2 years                      \\ \hline
+Public Distribution                     & 5                                      & 50M                         & 100                             & No vesting                                       \\ \hline
+Foundation Reserves                     & 10                                     & 100M                        & 0                               & Linear vesting over 2 years                      \\ \hline
+Team                                    & 20                                     & 200M                        & 0                               & 1 year cliff then linear vesting   over 3 years  \\ \hline
+Block Rewards                           & 25                                     & 250M                        & 0                               & Rewards   for validator per block over 10 years. \\ \hline
+\end{tabular}%
+}
+\caption{Aura token distribution design}
+\end{table}
+
+Table~\ref{table:tokenomics} shows the token distribution metrics for Aura Network. The maximum amount of Aura can be minted is exact \textbf{1 Billion} tokens. This value is specified in the Aura genesis block and cannot be changed in the future unless we do a hard fork. This is applied for both Aura Token on ETH and the Aura Coin as the token is simply just a placeholder.
+
+There are 6 categories that Aura coin will be allocated to:
+\begin{enumerate}
+    \item \textbf{Ecosystem Growth}: 20 percents of the total coin will be allocated to ecosystem growth fund. This fund is used for ecosystem development such as project grant, bug bounties, attracting stakeholders to provide utility services, etc. 
+    \item \textbf{Strategic investment}: 20 percents of the total coin go to private sales for strategic partners.
+    \item \textbf{Public Distribution}: 5 percents of the total coin will go to Aura Initial Exchange Offering for public sale.
+    \item \textbf{Foundation Reserve}: 10 percent of the total coin will be stored in the foundation treasury fund. All decisions on how to spend the fund must go through public governance process by Aura coin holders. 
+    \item \textbf{Team}: 20 percents of the total coin will go to the Aura team.
+    \item \textbf{Block Rewards}: 25 percents of the total coins will be periodically minted as block rewards to distribute to validators.
+\end{enumerate}
 
 \bibliographystyle{plain}
 \bibliography{references}
