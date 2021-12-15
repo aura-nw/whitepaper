@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt, titlepage]{article}
 
 % Language setting
 \usepackage[english]{babel}
@@ -21,8 +21,17 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{draftwatermark}
+\SetWatermarkLightness{0.95} 
 \usepackage[table,xcdraw]{xcolor}
-\usepackage{svg}
+
+% packages for vertical timeline
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{charter}
+\usepackage{environ}
+\usepackage{tikz}
+\usetikzlibrary{calc,matrix}
+\input{roadmap}
 
 % Fix too long hyperlinks in bibliography
 \usepackage{url}
@@ -34,11 +43,14 @@
 \date{\today}
 \maketitle
 
+\tableofcontents
+\newpage
 % \begin{abstract}
 % Your abstract.
 % \end{abstract}
 
-This paper gives a brief overview of \emph{Aura Network}, a layer-1 NFT-centric blockchain platform built using Cosmos SDK. Please be noted that this is an ongoing draft version that encapsulates our visi on of the network and how we are going to build it.
+\textit{
+This paper gives a brief overview of \emph{Aura Network}, a layer-1 NFT-centric blockchain platform built using Cosmos SDK. Please be noted that this is an ongoing draft version that encapsulates our vision on of the network and how we are going to build it.}
 
 \section{Context}
 
@@ -262,7 +274,7 @@ Block rewards refer to Aura coin rewards from the network to validators who part
 
 \subsubsection{Token release simulation}
 
-Figure~\ref{fig:release} shows a simple simulation on Aura token release schedule. Apart from the block reward category, the rest of the token allocation categories are straight forward to calculate based on its vesting schedule. The simulation file is located on our Github repository.
+Figure~\ref{fig:release} shows a simple simulation on Aura token release schedule. Apart from the block reward category, the rest of the token allocation categories are straight forward to calculate based on its vesting schedule. The simulation file is located on our Github repository~\footnote{\url{https://github.com/aura-nw/whitepaper/tree/main/simulation}}.
 
 \begin{figure}[ht]
 \label{fig:release}
@@ -271,7 +283,31 @@ Figure~\ref{fig:release} shows a simple simulation on Aura token release schedul
 \caption{Simulation of aura release schedule}
 \end{figure}
 
-%\section{Roadmap}
+Assuming that 2/3 of the total Aura Coins in the whole network are staked, our simulation shows that with an average of 8\% inflation per year, we can fully distribute all 250 millions to validators within 5 years (60 months).
+
+\section{Roadmap}
+
+\begin{vtimeline}[description={text width=12cm},
+    row sep=4ex,
+    use timeline header,
+    timeline title={Aura Network Roadmap}]
+    \textbf{2021} & -------- \textbf{Bootstrap \& Private Fundraising} -------- \endlr
+    November & Establish project\endlr
+    December & Strategic Round\endlr
+    \textbf{2022} & -------- \textbf{Establishing Infrastructure} --------\endlr
+    January & IEO Aura Token\endlr
+    Q2 & Aura Testnet, Wallet, Explorer, Multi-signature Wallet, Smart Contract support, NFT contract.\endlr
+    Q3 & Aura Mainnet, Token migration from ETH, Governance Tool\endlr
+    Q4 & First NFT use case\endlr
+    \textbf{2023} & -------- \textbf{Expanding the Network} --------\endlr
+    TBD & Bridge to ETH, Bridge to Hyperledger Fabric, Metaverse Integration\endlr
+\end{vtimeline}
+
+\bigskip
+\bigskip
+
+We presents the roadmap of the Aura Network project in the timeline drawing above. From 2021 to 2023, the project goes through 3 main phases. The \emph{Bootstrap \& Private Fundraising} phase is in 2021 where the team perform mandatory steps to establish the project base such as registering legal entities, call for seed \& strategic funding from VCs, etc. The second phase in 2022 consists of mostly infrastructure building objectives such as issuing tokens, releasing Mainnet and some support tools. We also target to have our first NFT use case at the end of 2022. Finally, the third phase in 2023 will focus on developing bridges to other networks and metaverse connectors.
+
 
 %\section{Conclusion}
 

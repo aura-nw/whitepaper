@@ -1,0 +1,83 @@
+%% Code by Claudio:
+%% https://tex.stackexchange.com/a/197447/221452
+%% Uses code by Andrew:
+%% http://tex.stackexchange.com/a/28452/13304
+\makeatletter
+    \let\matamp=&
+    \catcode`\&=13
+    \def&{%
+        \iftikz@is@matrix%
+            \pgfmatrixnextcell%
+        \else%
+            \matamp%
+        \fi%
+    }
+\makeatother
+
+\newcounter{lines}
+\def\endlr{\stepcounter{lines}\\}
+
+\newcounter{vtml}
+\setcounter{vtml}{0}
+
+\newif\ifvtimelinetitle
+\newif\ifvtimebottomline
+
+\tikzset{
+    description/.style={column 2/.append style={#1}},
+    timeline color/.store in=\vtmlcolor,
+    timeline color=red!80!black,
+    timeline color st/.style={fill=\vtmlcolor,draw=\vtmlcolor},
+    use timeline header/.is if=vtimelinetitle,
+    use timeline header=false,
+    add bottom line/.is if=vtimebottomline,
+    add bottom line=false,
+    timeline title/.store in=\vtimelinetitle,
+    timeline title={},
+    line offset/.store in=\lineoffset,
+    line offset=4pt,
+}
+
+\NewEnviron{vtimeline}[1][]{%
+    \setcounter{lines}{1}%
+    \stepcounter{vtml}%
+    \begin{tikzpicture}[column 1/.style={anchor=east},
+        column 2/.style={anchor=west},
+        text depth=0pt,text height=1ex,
+        row sep=1ex,
+        column sep=1em,
+        #1
+    ]
+        \matrix(vtimeline\thevtml)[matrix of nodes]{\BODY};
+        \pgfmathtruncatemacro\endmtx{\thelines-1}
+
+        \path[timeline color st]
+            ($(vtimeline\thevtml-1-1.north east)!0.5!(vtimeline\thevtml-1-2.north west)$)--
+            ($(vtimeline\thevtml-\endmtx-1.south east)!0.5!(vtimeline\thevtml-\endmtx-2.south west)$);
+
+        \foreach \x in {1,...,\endmtx}{
+            \node[circle,timeline color st, inner sep=0.15pt, draw=white, thick]
+            (vtimeline\thevtml-c-\x) at
+            ($(vtimeline\thevtml-\x-1.east)!0.5!(vtimeline\thevtml-\x-2.west)$){};
+                \draw[timeline color st](vtimeline\thevtml-c-\x.west)--++(-3pt,0);
+        }
+
+        \ifvtimelinetitle%
+            \draw[timeline color st]([yshift=\lineoffset]vtimeline\thevtml.north west)--
+                ([yshift=\lineoffset]vtimeline\thevtml.north east);
+
+            \node[anchor=west,yshift=16pt,font=\large]
+                at (vtimeline\thevtml-1-1.north west)
+                {\textsc{Timeline \thevtml}: \textit{\vtimelinetitle}};
+        \else%
+            \relax%
+        \fi%
+
+        \ifvtimebottomline%
+            \draw[timeline color st]([yshift=-\lineoffset]vtimeline\thevtml.south west)--
+            ([yshift=-\lineoffset]vtimeline\thevtml.south east);
+        \else%
+            \relax%
+        \fi%
+    \end{tikzpicture}
+}
