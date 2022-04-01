@@ -20,8 +20,6 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage{draftwatermark}
-\SetWatermarkLightness{0.95} 
 \usepackage[table,xcdraw]{xcolor}
 
 % packages for vertical timeline
@@ -38,8 +36,10 @@
 \def\UrlBreaks{\do\/\do-}
 
 \begin{document}
-\title{Aura Network: a modern NFT-centric blockchain platform}
-\author{admin@aura.network}
+\title{Aura Network: a NFT-centric blockchain platform}
+\author{
+admin@aura.network\\
+nam.phan@aura.network}
 \date{\today}
 \maketitle
 
@@ -50,110 +50,64 @@
 % \end{abstract}
 
 \textit{
-This paper gives a brief overview of \emph{Aura Network}, a layer-1 NFT-centric blockchain platform built using Cosmos SDK. Please be noted that this is an ongoing draft version that encapsulates our vision on of the network and how we are going to build it.}
+This paper gives a brief overview of \emph{Aura Network}, a layer-1 NFT-centric blockchain platform.
+}
 
 \section{Context}
 
-Cryptocurrencies (crypto) are becoming more and more popular by the day. Since the birth of Bitcoin in 2009, the crypto market has grown to thousands of billions of US dollars in size. The success of crypto projects brings more innovations to the blockchain ecosystem. Recently, the hot topic of Non-Fungible Token (NFT) is an ideal case study of how blockchain technology is changing the world.
+Since the birth of Bitcoin in 2009, the crypto market has grown to thousands of billions of US dollars in size. While most of on-chain activities coming from decentralized finance (DeFi), we have seen the unprecedented growth in popularity of non fungible tokens (NFT) since the last year. In March 2021, the digital artwork "Everydays: the First 5000 Days" by Beeple, a collage of 5000 images created daily by the artist in the last 13 years \cite{beeple} sold for \$ 69 millions. Since then, NFTs have started to penetrate into our daily lives in various ways.
 
-\subsection{NFT overview}
 NFT origin can be traced back to the ERC-721 Ethereum token standard \cite{entriken2018erc}. An NFT is a distinguishable token that can be owned and transacted by individuals. 
-Given an asset, either digitized or physical, we can issue an NFT that embeds the asset metadata including name, description, and images to represent the ownership of the NFT creator to such asset. As this ownership relation can be freely traded in the market and the unique property of the token, NFT investment is becoming widely popular. By the last quarter of 2021, the NFT sales worldwide have surged to \$ 10.5 Billion \cite{nftsale}. Among the popularity of NFT, there are 6 main categories:
+Given an asset, either digitized or physical, we can issue an NFT that embeds the asset metadata including name, description, and images to represent the ownership of the NFT creator to such asset. As this ownership relation can be freely traded in the market and the unique property of the token, NFT investment is becoming widely popular. By the last quarter of 2021, the NFT sales worldwide have surged to \$ 10.5 Billion \cite{nftsale}. 
 
-\begin{enumerate}
-\item Collectibles: Because NFTs are unique, possession of special NFTs is a natural demand for collectors. Some of the most well-known NFT collectibles are CryptoPunks \cite{cryptopunks}, Bored Ape Yacht Club \cite{bayc}. Any NFT can be considered collectibles. However, some have other usages in other categories as well. Currently, collectibles market value is at \$ 5.7 Billion, accounting for more than half of the whole NFT market.
-\item Game: In-game assets can be represented as NFT. This unique interaction enables a new decentralized gaming trend of "play-to-earn" where players can obtain NFTs from the game then later sell them on the crypto market. Since May 2021, the Pokemon-inspired crypto game Axie Infinity \cite{axie} has rapidly gained attraction and currently provides one of the most valuable NFT collections in the world.
-\item Art: Another form of collectibles NFT is digital art. NFT provides a new way for artists to increase the digital art value as it is truly unique. While the product itself can be easily copied, screen captured without permission, the origin of the art and its owner cannot. The digital artwork "Everydays: the First 5000 Days" by Beeple is a collage of 5000 images created daily by the artist in the last 13 years \cite{beeple}. The work NFT was sold for \$69 million to a crypto investor in early 2021 and is the most expensive NFT to date. Besides traditional digital arts, website likes ArtBlock \cite{artblock} provides a programmable interface to allow artists to randomly generate unique images in their respective styles and tokenize them into NFTs. 
-\item DeFi: As NFT is becoming valuable, its liquidity grows. Gradually, NFT is making its way into decentralized financial solutions. nftfi \cite {nftfi} offers a platform for NFT collateralise loans. Some NFT games like Cometh \cite{cometh} intelligently integrate token swap inside the token economy and gain a lot of attraction from the crypto community.  
-\item Metaverse: with the rise of NFT and the recent announcements of big tech companies like Meta \cite{facebook}, Microsoft \cite{microsoft}, Metaverse NFT has gradually become the new trend of the crypto community. Pioneer projects such as Decentraland \cite{decentraland} and The Sandbox \cite{sandbox} allow users to create and share their 3D objects. These objects can be avatars, animals, land, real estate, etc. 
-\item Other Utility: Outside of gaming, NFT can also be used for other utility purposes. Using Domain names NFT services like Ethereum Name Service \cite{ens}, users can register for ``.eth" Internet domains. VeeFriends \cite{vee} from Gary Vaynerchuk allows NFT holders to join Veecon, an exclusive conference for the Gary community.
-\end{enumerate}
+What will the future look like for NFT? The technology is growing beyond simple collectibles towards a much more diverse use of NFTs in finance, gaming, real estate, metaverse, etc. Every asset, digital or physical, can have its unique representation in the decentralized blockchain ecosystem and can be transacted without restriction. A lot of new applications and platforms rise to tackle new use cases or target different communities. However, these solutions have to overcome a lot of challenges before becoming actually mainstream, especially in term of usability and interoperability. 
 
-\begin{figure}[ht]
-\label{fig:nftsale}
-\includegraphics[width=14cm]{img/nftchart.png}
-\centering
-\caption{NFT Market value by categories in 2021 \cite{nftsale}}
-\end{figure}
+\emph{Usability} is a key factor to almost all software products that end-users interact with. While NFT is just a token standard, the actual NFT object is owned, transacted by end-users through various decentralized applications (DApps). Most of the current NFT schemes are based on Ethereum, thus they inherit drawbacks from the Ethereum network as well. The confirmation time is slow, Ethereum 1 has around 15-30 transactions per second (TPS), which is extremely slow for global scale DApps. Gas price is also extremely high, especially when minting new NFTs or uploading metadata to the blockchain. Ethereum 1 carbon footprint is also very high due to the use of proof-of-work algorithm. These problems limit the utility of NFTs to use cases that concern only high-value items rather than for everything. The tech community has been working actively on this problem for years. Ethereum 2 upgrade promises a more scalable and sustainable ecosystem. However, it is still a long way until all the upgrades are in place. Alternatively, other blockchains with much better usability emerge such as Flow or BNB Smart Chain (BSC). While non of the alternative choices is as popular as Ethereum, these blockchain platforms offer a much better user experience and are more suitable for different use cases. 
 
-Figure \ref{fig:nftsale} shows the sale value of NFT in 2021 by these categories. We can see that most of the market value are collectibles (\$ 5.7 Billion) and arts (\$ 1.9 Billion). While this is a good sign to show the appreciation for NFT and the accessibility of the technology, we can expect more use cases for NFT in the future. NFT enables scarcity, uniqueness, and proof of ownership to any unique asset in a decentralized way, not only digital items. Thus, they can be used to pretty much anything in the world, even in the physical world. 
+There is little \emph{interoperability} among different NFT ecosystems. There is currently no way to directly transmit an NFT from Ethereum to BSC yet. While cross-chain communications are blooming, it is still some time before we can see all of these advancements work with NFT. While the major NFT schemes are concentrated in Ethereum, this problem prevents the wide adoption of the technology to other blockchain platforms.
 
-\subsection{Challenges}
-What will the future look like for NFT? The technology is growing beyond simple collectibles or arts towards a much more diverse use of NFTs in finance, gaming, real estate, metaverse, etc. Every asset, digital or physical, can have its unique representation in the decentralized blockchain ecosystem and can be transacted without restriction. However, to enable that future, we will have to overcome several key challenges with the technology: usability, regulation, and interoperability.
+What are the most popular blockchain platform for NFT? Despite all drawbacks in usability of Ethereum, NFT transaction value on the platform still dominates the market by more than 85\% (March 2022)~\footnote{https://cryptoslam.io/}. Following the chart are Ethereum competitors such as Solana, Avalanche, etc. There is little difference between creating NFT on one platform and another. Hence it is extremely difficult for these platforms to compete with Ethereum as users are already much familiar with all the tools, wallets and high liquidity marketplaces like OpenSea. Top blockchain platforms like Solana, BNB smart chain, Avalanche, etc. are having their own NFT marketplaces and games, mostly by investing a lot of capital in startups, game studios or leveraging their existing crypto community.
 
-\emph{Usability} is a key factor to almost all software products that end-users interact with. While NFT is just a token standard, the actual NFT object is owned, transacted by end-users through various decentralized applications (DApps). Most of the current NFT schemes are based on Ethereum, thus they inherit drawbacks from the Ethereum network as well. The confirmation time is slow, Ethereum 1 has around 15-30 transactions per second (TPS), which is extremely slow for global scale DApps. Gas price is also extremely high, especially when minting new NFTs or uploading metadata to the blockchain. Ethereum 1 carbon footprint is also very high due to the use of proof-of-work algorithm. These problems limit the utility of NFTs to use cases that concern only high-value items rather than for everything. The tech community has been working actively on this problem for years. Ethereum 2 upgrade promises a more scalable and sustainable ecosystem. However, it is still a long way until all the upgrades are in place. Alternatively, other blockchains with much better usability emerge. Flow is a new blockchain platform, originated from developers who built created CryptoKitties. Flow focuses on applications, games, and digital assets. Binance Smart Chain (BSC) also supports NFT through the BEP-721 token standard. While non of the alternative choices is as popular as Ethereum, these blockchain platforms offer a much better user experience and are more suitable for different use cases. 
-
-Similar to any cryptocurrency scheme, \emph{regulation} is another major concern of NFT. Legally speaking, not all countries support the use and trade of NFT. Owning an NFT does not explicitly grant the owner any copyright or lawful enforcement over the real asset. Thus, investing serious tokens in NFT is not as easy as it looks. For assets like books, arts, real-life assets are taxable properties while their NFTs are not. It is unclear in the future whether NFT or any profit from NFT trading can be taxed or not.
-
-Finally, there is little interoperability among different NFT ecosystems. There is currently no way to directly transmit an NFT from Ethereum to BSC yet. While cross-chain communications are blooming, it is still some time before we can see all of these advancements work with NFT. While the major NFT schemes are concentrated in Ethereum, this problem prevents the wide adoption of the technology to other blockchain platforms.
+When a business chooses a blockchain to create NFT, there are several things to consider such as transaction cost, robustness, security, speed, community, usability, interoperability, etc. It is difficult to have one that get all of these characteristics. Some NFT projects that thrive to reach next level of innovation choose another approach, that is to make their own blockchain network e.g. Ronin and Flow so that they can optimize and tailor it to have their desire quality. We believe that this bottom up approach is the correct way of solving the usability and interoperability problems described above. There should be more layer-1 blockchain that can be optimized for specific purposes, governance and secured by communities that share the same trait or interest. Thus, applications on top of these blockchain can have more customization for their target customers. Eventually, these chains can be connected through various cross-chain communication protocols to create a network effect to bring more utility for tokens.
 
 \section{Introducing Aura Network}
-Given all of the challenges above, we introduce \emph{Aura Network}, an NFT-centric blockchain platform that focuses on expanding the use of NFT across various industries. Our vision is to create a one-stop destination for minting, evaluating, querying, and transacting NFT, to become a pioneer NFT infrastructure for the future. Aura Network focuses on solving the 3 challenges of \emph{usability}, \emph{regulation}, and \emph{interoperability} of the current NFT market.
 
-This section provides a high-level view of 3 main aspects of Aura Network: a universal framework for managing NFT, a multi-chain solution to expand the use of NFT, and an NFT infrastructure for the metaverse.
+We introduce \emph{Aura Network}, an NFT-centric, layer-1 blockchain that focuses on expanding the use of NFT across various industries. Our vision is to create a one-stop destination for minting, evaluating, querying, and transacting NFT, to become a pioneer NFT infrastructure for the future. Aura Network focuses on building a \emph{sovereign blockchain} that is optimized for NFT use cases. This section provides a high-level view of the vision of Aura Network.
+
+\subsection{Sovereign blockchain}
+Aura Network is a \emph{sovereign blockchain}. That means having its own decentralized infrastructure that can be governed independently by Aura Community rather than depending on other layer-1 chains. Blockchain like Ethereum or Solana are trying to have everything built on top of it, this make these networks eventually be congested with too many unrelated transactions that can only be solved by sacrificing either security or decentralization. Even then, it takes a long time to update these networks as every change might cause significant impact to existing applications. By targeting our self as a sovereign, NFT-centric blockchain, Aura will have more freedom to optimize the platform to give better performance, security and utility for NFT applications. 
+
+\subsection{Optimizing and scaling for IP owners}
+Aura focuses on helping \emph{brands}, \emph{influencers}, \emph{IP owners} and \emph{game creators} providing a way to tokenize their digital assets to create an unique experience using NFT. Aura thesis on building the next level NFT eco-system evolves around this customer segment:
+
+\begin{itemize}
+    \item \textbf{Bottom-up optimization}: By working with content providers / owners, Aura gradually optimize the platform both in terms of technical capacity and utilities for accelerating the building process of NFT based decentralized applications. 
+    \item \textbf{Geological scaling}: Aura shares the view of Ethan Buchman - \emph{co-founder of Cosmos} on blockchain scalability via geo-local systems. It is to bridge the gap between the platform and the customer it serve by providing support for local communities. Eventually, successful applications building on top of Aura from one local community can be easily replicated and customized to fit other communities that share same attributes such as culture, language, countries, etc.
+    \item \textbf{Maximize interoperability}: Pushing bottom-up development is not scalable in the long term. Eventually, this approach will meet top down system like Ethereum or Solana at some point. By adopting global standards, integrating with bridges, inter-blockchain communication protocol, Aura can help local brands and content providers to scale their applications and products to the global market.
+\end{itemize}
+
+In developing this thesis, Aura is one of the pioneer platform that help local businesses, IP owners and game studios to tokenize their portfolios and scale to global level. This will help bringing more end-users from the mainstream traditional market into the NFT/metaverse ecosystem. This is the key step in improving the awareness about and utility of NFT as it then can be used widely even in traditional finance.  
 
 \subsection{A universal framework for NFT}
-The original token standard ERC-721 and ERC-1155 laid a foundation for NFT standard interfaces. How these tokens are created and used in DApps is not standardized. This allows developers to have more room for creativity. Wang et al. \cite{wang2021non} summarized two popular protocols for managing NFT in DApps:
-\begin{enumerate}
-\item \textbf{Top to Bottom:} where an owner creates the asset, mints the NFT token that represent the asset, and trades it with others through the $transferFrom$ function. This pattern is used in CryptoPunks \cite{cryptopunks}, Beeple's Everydays \cite{beeple}, etc.
-\item \textbf{Bottom to Top:} where the DApp creates an NFT template that allows users to invoke and create their own unique NFT based on that template. This is used in platform-generated NFT such as Artblock \cite{artblock} and NFT games like Axie Infinity \cite{axie}.
-\end{enumerate}
+The original Ethereum token standard ERC-721 and ERC-1155 laid a foundation for NFT standard interfaces. How these tokens are created and used in DApps depends on the creativity of developers. It also the source of complexity in developing DApps. There are well-known middleware solutions to tackle this complexity such as \emph{Infura} or \emph{Metaplex} but mostly they are tools and managed services helping application developers to outsource the complexity of key management or blockchain client integration. Aura Network takes it to the next level by not only developing middleware services, open-source smart contract templates, but also supporting integration with local services such as payment gateway, e-commerce platform, social network, etc. With such built-in support tools, Aura Network helps accelerating not only creating new DApps, but also creating a whole new NFT business easily. 
 
-Most of the functions from these two protocols are concerning either the NFT creator or buyer. There might be other stakeholders in the protocol such as the DApp creator and the exchange marketplace. These are suitable for simple digital items and simple use cases. However, if we are targeting a vastly broad NFT market that involves not only collectibles and digital items but also physical assets, comprehensive digital contracts, etc., there are more parties involved. We now give an example of possible important stakeholders that may appear in such a market:
+\subsection{Maximizing interoperability}
 
-\begin{enumerate}
-    \item \textbf{Custodian:} Similar to the term in banking, a custodian bank is a financial service provider that holds customers' assets for safekeeping. While "Not your keys, not your coins" is widely accepted in the blockchain community, Coinbase and various banks around the world are offering high-quality custodian services for crypto assets. They provide cold storage, security controls, and even insurance plan for protecting cryptocurrencies. This practice is also long-established for physical assets as well. Keeping authorized papers, wills or high-value items like jewels, antiques are very common for custodian services.
-    
-    To NFT users, custodians can offer safekeeping physical items in their safe vaults and only allow the user to redeem those items if they own the NFT. If NFT provides a way to prove the ownership of an asset, we can also expect custodians to prove that they are, indeed, holding the corresponding physical item in their safe vaults by an on-chain transaction.
-    
-    \item \textbf{Auditor:} In finance, an auditor refers to the person that is authorized to verify the correctness of financial documents and whether they comply with the regulation. In security, auditors conduct reviews and make sure the system is protected from common threats. In a lot of cases, the asset owner, buyer or, the exchange do a part of the auditor's job such as KYC, proving the legitimacy of papers with records, bills, etc. However, in the case of issuing NFT for high-value items like real estate, having a third-party auditor brought in to certify the legitimacy of the asset, as well as the right to sell of the owner will definitely increase the trust of the buyer and value of the item.
-    
-    \item \textbf{Evaluator:} In the real estate industry, property or land valuation is often a required procedure to give an estimation of market value to the property. Diamonds are evaluated based on their quality factors in clarity, color, cut, and Carat Weight. The valuation process is mostly conducted professionally and can give a relatively correct value of an asset rather than a subjective opinion. Similarly, NFTs of valuable assets can also be evaluated in a lot of criteria: the origin of the asset, level of granted permission, the market price of similar items, or depending on the utility of the NFT.
-    
-    \item \textbf{Asset Manager:} With items that have a high utility such as cars, real estate, a local manager who keeps track of utility usage of the item greatly benefits the community. Real estate companies often have house managing companies to do house maintenance, screen tenants, or collect rents. If NFT can represent the ownership of a building, the NFT owner not only should have all documentation relating to the properties but also can get local asset managers on board to do all the manual work for them later on. 
-    
-    \item \textbf{Investor:} Another new use case of NFT is to fractionize the NFT to allow multiple investors to co-invest in the item. This fractional ownership adds new ways for integrating NFT with DeFi schemes such as Uniswap as each fraction is fungible. Thus, multiple investors can pool up and join the NFT investment game.
-\end{enumerate}
+With the success of Bitcoin, Ethereum, Cardano, and others, a lot of crypto project was born, creating many isolated blockchain networks. With multiple blockchains coexisting, cross-chain communication solutions emerge. Atomic swap, cross-chain messages, inter-blockchain communication protocol are all examples of the capability to link different blockchains together to create a more cohesive ecosystem that benefits everyone. While most of the existing technique applies for fungible tokens, there are a lot of use cases for inoperable NFT that can be transferred from one chain to another for example: digital assets, game items, deeds, identity, etc.
 
-Custodian, auditor, evaluator, asset manager, and investors are just some samples of possible stakeholders that are needed in the NFT market. We have seen some use cases that require those parties. However, a complete platform that allows all of them to work together on-chain is unheard of. This is why we create Aura Network. We envisioned Aura Network to be a one-stop destination for all stakeholders and projects in the NFT ecosystem. Every interaction with NFT and its counterpart in the physical world should be reflected on-chain.
-
-\subsection{Connecting to other Blockchains}
-
-With the success of Bitcoin, Ethereum, Cardano, and others, a lot of crypto project was born, creating many isolated blockchain networks. With multiple blockchains coexisting, cross-chain communication solutions emerge. Atomic swap, cross-chain messages are all examples of the capability to link different blockchains together to create a more cohesive ecosystem that benefits everyone. However, at the moment, there is not yet a mainstream solution for either moving an NFT from one blockchain to another or having multiple NFT on multiple blockchains that represent the same asset. While this is mostly due to the poor interoperability among different blockchain platforms, we can expect that this issue can be resolved in the near future due to the advancement of cross-chain bridges similar to XP.Network \cite{xpnetwork} or related projects. 
-
-Another part of the blockchain community that we need to look at is the private blockchain sector. Standing beside the success of crypto projects, private blockchain projects are slowly gaining attraction. Private, consortium, or permissioned blockchain often refer to systems that consist of one or several authorized parties that create a blockchain network for specific business purposes. Imagine a group of companies who want to create a distributed network for transparently exchanging assets, tracking items, or sharing documents. Unlike its counterpart, private blockchains are more appealing for companies, enterprises, or governments as they are easier to control and do not require volatile currencies to operate. The success of the crypto trend in 2020 also brought a lot of opportunities to the private blockchain ecosystem. The private blockchain sector is predicted to generate \$176 Billion in 2025 then surge to  \$ 3.1 Trillion in business value by 2030 \cite{privatebc}. 
-
-Can NFT become a game-changing use case in private blockchain? a lot of businesses are looking into loyalty, insurance, or traceability use cases where the blockchain ledger is immutable storage of important data. This fits the idea of NFT very well. However, there isn't any mainstream use case that can bring NFT to the private blockchain sector. Typically, enterprises or businesses are the main adopters of private blockchain as they  require more control over the network. By having a bridge to public blockchain and vice versa, NFTs defined on Ethereum, BSC and other networks can be moved to private chains, where they have more utility in dealing with real-world problems that businesses are dealing with in their private blockchain setup. In turn, by having a route to the public side, businesses now have access to a market of millions of users and billions of USD worth of values circulating every day. This increases liquidity on private networks massively and enables many other use cases that a single blockchain network can not achieve.
-
-This is the second aspect that Aura Network is trying to solve. The Aura blockchain platform should be capable of bridging to other blockchain networks, either public or private ones, and vice versa. Thus, NFT owners can bring their on0chain assets to any place, any app, at any time. 
-
-\subsection{Towards the metaverse}
-In this last section, we look at the recently popular trend of ``metaverse". The word is a combination of ``meta" and ``universe". It describes a hypothetical virtual world that is linked to the physical world. The term was coined in the science-fiction novel \emph{Snow Crash} by Neal Stephenson in 1992. While the concept of the virtual world is not new as computer games have been around for decades, the metaverse concept brings more integration between the virtual and the physical world. In the metaverse, users are represented as \emph{Avatars} and through them, they can interact with the digital environment which is a metaphor for the real world \cite{lee2021all}.
-
-While the term \emph{metaverse} was coined in 1992, the development of the idea was dated way before it. The tabletop game \emph{Dungeon \& Dragons} was published in 1974, allowing players to submerge in a fantasy medieval European theme world with superpowers and mythical creatures. That was more than a decade when the first personal computer was introduced. Later on, with the booming of the Internet, the tabletop imaginative world then became virtual, digital worlds of massively multiplayer online games (MMOG) such as \emph{Second Life}, \emph{Minecraft}. Players then can also have a mixed experience of the virtual and physical world through games like \emph{Pokemon Go} and extended reality hardware devices like \emph{Hololens} or \emph{Oculus Rift}. Blockchain-based Metaverse came later. The NFT game \emph{Crypto Kitties} in 2017 is the first popular blockchain game that allows players to truly own in-game assets and create a new blockchain-based virtual economy. Following the kitties, other games like \emph{Decentraland}, \emph{The Sandbox}, etc. are creating new opportunities for players to not only submerge into the metaverse world but also actually own some part of it themselves.
-
-The metaverse is more than just games. Lee et al \cite{lee2021all} show us the three steps of evolution in technology that support metaverse. The first step of \emph{Digital Twins} is where physical objects can be projected to their digital form. Photos, 3D models are examples. The next step is \emph{Digital Natives} where users can freely create new content, virtual objects that are based on the projected ones. Users can own it, sell it in a decentralized manner, etc. This is already achieved in NFT games. Finally the last one, \emph{Co-existence} is where both physical and digital objects exist, are linked together and users can interact with both. This is the step that Aura Network wants to aim for.   
-
-\begin{figure}[ht]
-\label{fig:metaverse}
-\includegraphics[width=14cm]{img/metaverse.png}
-\centering
-\caption{Evolution states of the metaverse \cite{lee2021all}}
-\end{figure}
-
-Mapping real-world, physical assets to NFTs is an important step in achieving the co-existence state of the metaverse. As a universal framework for working with NFT, Aura Network's final step is to work with games and service providers like Decentraland, Axie Infinity, Meta, Microsoft, etc. to bring NFT on-chain to these virtual worlds.
+Interoperability is a key part in the thesis of building Aura Network. Inter-connectivity and bridging is one of the major force driving the success of DeFi and we expect it will be the same for NFT.
 
 \section{Architecture}
-In this section, we will present the high-level software architecture of the Aura Network ecosystem. Particularly, we will first go through the architecture of the Aura Blockchain platform. Next is the envisioned eco-system that we will build on top of the platform and finally, we give an overview of a complete hypothetical use case of mapping real-life assets on the Aura Network.
+In this section, we will present the high-level software architecture of the Aura Network ecosystem. 
 
 \subsection{Blockchain Platform}
 The Aura Network Blockchain platform is a \emph{Layer-1 blockchain} built using \emph{Cosmos SDK} \cite{kwon2019cosmos}. The Cosmos SDK is an open-source framework for building proof-of-stake blockchains. It allows developers to create a blockchain platform from scratch with native interoperate capability with other blockchain platforms. 
 
 \begin{figure}[ht]
-\label{fig:architecture}
-\includegraphics[width=\textwidth, trim={5cm 2cm 5cm 0}, clip]{img/architecture.pdf}
+\includegraphics[width=\textwidth, trim={0 2cm 2cm 0}, clip]{img/architecture.pdf}
 \centering
-\caption{The Aura Network blockchain platform architecture}
+\caption{The Aura Network blockchain architecture}
+\label{fig:architecture}
 \end{figure}
 
 Figure \ref{fig:architecture} shows the high-level architecture of the Aura blockchain platform. There are several main components that we want to highlight in this architecture:
@@ -168,8 +122,11 @@ The consensus engine is \emph{Tendermint}~\cite{buchman2016tendermint}, a Byzant
 \subsubsection*{CosmWasm}
 CosmWasm stands for ``Cosmos WebAssembly", it's a Cosmos module that enables WebAssembly virtual machines in the cosmos SDK. As the smart contract written for CosmWasm is compatible with all other Cosmos-based blockchains, we choose CosmWasm as the middleware for building smart contracts and DApps for the Aura ecosystem. Currently, it only supports contracts written in \emph{Rust}, but many high-level programming languages can be added in the future.
 
+\subsubsection*{IBC}
+Inter-Blockchain Communication Protocol (IBC) are the signature Cosmos module that support transferring tokens directly from one chain to another. Aura Network enables IBC by default so that moving Aura Coin to Terra, Atom, Osmosis or other IBC-enabled blockchain can be performed easily.
+
 \subsubsection*{Bridge}
-Bridge is also an important part of aurad. As Aura Network focuses on bridging assets to other blockchains even outside of the Cosmos SDK, bridge modules that support  Inter-Blockchain Communication Protocol (IBC) are the best way of doing this. Currently, there is already \emph{Gravity} bridge that connects Cosmos-based blockchains to Ethereum. We also see that IBC bridges are in development for other blockchains, including private ones like Hyperledger Fabric, a more popular choice for building consortium blockchain in enterprises. 
+Bridge is also an important part of aurad. As Aura Network focuses on bridging assets to other blockchains even outside of the Cosmos SDK, bridge solution that support ERC-20, BEP-20 tokens will be employed. We are in contact with decentralized exchange and bridge team e.g. Impossible Finance to develop this component. 
 
 \subsection{Aura Network ecosystem}
 Figure~\ref{fig:auraeco} shows the potential building blocks of the Aura Network. At the moment, we divide the ecosystem into 6 main categories
@@ -207,7 +164,7 @@ This section describes information related to a native currency supported by the
 We introduce 2 types of native tokens in the Aura Network: the Aura Token on Ethereum and Aura Coin. Both refer to the same unit.
 
 \begin{enumerate}
-    \item Aura Token on ETH: To launch Aura Network, we first introduce the ERC-20 Aura Token on Ethereum. This token only acts as a placeholder for the later Aura Coin that will be introduced when Aura Mainnet launches. Like other ERC-20 tokens, Aura Token can be traded on the cryptocurrency market until Aura Coin is introduced.
+    \item Aura Token on ETH: To launch Aura Network, we first introduce the ERC-20 Aura Token on Ethereum. This token only acts as a placeholder for the later Aura Coin that will be introduced when Aura Mainnet launches. Like other ERC-20 tokens, Aura Token can be freely traded on the cryptocurrency market.
     \item Aura Coin: Aura Coin is the native currency of the Aura Network blockchain platform. Besides the trading capability of Aura Token, Aura Coin has many other utilities:
 
     \textbf{Staking}: Aura Coin holders can delegate their coins to trusted validators to earn passive commission income from the network.
@@ -220,8 +177,6 @@ We introduce 2 types of native tokens in the Aura Network: the Aura Token on Eth
     
     \textbf{Payment for Utility Services}: As Aura focuses on bringing real-world assets and different stakeholders to the ecosystem to offer business services, Aura Coin can be used for payment for these utility services. Aura holders can vote to choose their service providers (evaluator, auditor, etc.) and use Aura to pay for their services.
 \end{enumerate}
-
-As the Aura Token is just a temporary placeholder for the Aura coin, we expect a transition period where one can ``convert" their token on ETH to receive their corresponding amount of Aura coin on the Aura main network. After receiving Aura coins, Aura Token will be burnt.
 
 \subsection{Token Distribution}
 % Please add the following required packages to your document preamble:
@@ -251,12 +206,41 @@ Table~\ref{tab:tokenomics} shows the token distribution metrics for Aura Network
 
 There are 6 categories that Aura coin will be allocated to:
 \begin{enumerate}
-    \item \textbf{Ecosystem Growth}: 20 percent of the total coin will be allocated to the ecosystem growth fund. This fund is used for ecosystem development such as project grants, bug bounties, attracting stakeholders to provide utility services, etc. 
-    \item \textbf{Strategic investment}: 20 percent of the total coin go to private sales for strategic partners.
-    \item \textbf{Public Distribution}: 5 percent of the total coin will go to Aura Initial Exchange Offering for public sale.
-    \item \textbf{Foundation Reserve}: 10 percent of the total coin will be stored in the foundation treasury fund. All decisions on how to spend the fund must go through a public governance process by Aura coin holders. 
-    \item \textbf{Team}: 20 percents of the total coin will go to the Aura team.
-    \item \textbf{Block Rewards}: 25 percent of the total coins will be periodically minted as block rewards to distribute to validators.
+\item \textbf{Ecosystem Growth}: \\
+20 percent of the total coin will be allocated to the ecosystem growth fund. This fund is used for ecosystem development such as project grants, bug bounties, attracting stakeholders to provide utility services, etc. Examples include, but not limited, to the following: 
+
+\begin{enumerate}
+
+\item \textbf{Airdrop:} \\ 
+Built on the Cosmos SDK system, we would like to reach the most active participants on the same system. As such, some AURA token will be dropped to ATOM and other tokens in the Cosmos system. The drop is either in a fixed quantity (in the spirit of Uniswap), or proportional to staked tokens. Tokens are claimable conditional on some criteria such as the length of staking, the minimum quantity of qualified tokens staked, participating in governance voting, or engage with the community in any social media such as Telegram or Discord etc. We will also consider to airdrop some random Fan Tokens to AURA token holders to encourage people to hold AURA token on a long-term basis.
+\item  	\textbf{Community pool:} \\
+Developing and expanding network reach requires tokens as a source of capital, which can be financed from the Community pool. A stakeholder (can be a validator, advisor, or influential participant of the network) can write up a proposal and specify the requested quantity of token, the purpose of using token, timeline of the plan and any expected result.  
+The proposal is then to be voted “Yes” or “No” on the majority rule basis. That is, if a proposal receives more than 50\% “Yes” votes, it will be implemented, and vice versa. The voter can be validators and/or token holders. Token holders can delegate their coin to their choice validator to increase the weight on the cast of that validator. The weight is proportional to the total amount of token available to all voters at the time of voting. The process is designed to be democratic, and proposals that are unambiguously beneficial to the network and stakeholders should pass for most of the time.\\
+There will be a time when a proposal is controversial in the sense that the benefit-cost is ambiguous to the voters. As such, we would like to collect feedback from the “No” voters on why they downvote the proposal. We propose that when choosing “No”, there is another question for why the voters choose no, and the answer is to be chosen in a multiple-choice format. This mechanism would help proposer to improve on their proposals for the following-up rounds.
+ 
+\item  	\textbf{Bug bounty}: \\ 
+Some tokens will be allocated to users who report bugs and proposes fixed to the network.
+
+\end{enumerate}
+
+\item \textbf{Strategic partner}: \\
+20\% percent of the tokens go to private sales to strategic partners. They are invited to finance the project in an exchange for the token of a network, at a discount rate of \$0.025 per token to compensate for the extra risk that they take in due to the projects being in the early stage.
+ 
+\item \textbf{Public distribution}: \\ 
+5 percent of the tokens go to the public sale. We are working with several centralized exchange to launch an Initial Exchange Offering (IEO). We also plan to list in AURA to other Decentralized Exchanges (DEXs) to reach a wider range of investors. 
+
+\item      \textbf{Foundation Reserve}: \\
+10 percent of the total coin will be stored in the foundation treasury fund. It is supposed to be served as a “last-resort” in the case that the network requires funds to solve a particular problem that other source of funding (e.g Community Pooling) is not on the table. All decisions on how to spend the fund must go through a public governance proposal as outlined in the “Community Pool” subsection.
+ 
+\item \textbf{Team}: \\ 
+20 percent of the total coin go to the AURA team to incentivize the developer to expend their effort in building the network.
+ 
+\item   \textbf{Block Rewards}: \\
+25 percent of the total coins will be periodically minted as block rewards to distribute to validators and delegators.\\
+Alternatively, block rewards can be allocated to different part of the project. Look at the following diagram as an example from Stargaze
+As noted by Stargazer post: “45\% of block rewards are set aside for NFT bidding and staking incentives. Token holders will be able to earn yield by bidding and staking on NFTs for certain periods of time. An upcoming post will outline this mechanic in details”. This is a feature that AURA team is exploring.
+
+Incentives play a big role in deciding the token allocation. For example, allocating “insufficient” amount of tokens to validators may lead to the extreme case where validators cheat the network by accepting fraudulent block (e.g double-spending), or validators may not be interested in participating the network which threats the network security. Allocating too little tokens to advisors may result in advisors being “inactive”, discouraging them from engaging with the team to provide helpful advice. Overall, we strategically allocate our token in line with our long-term vision with regards to the development and future of the project, 
 \end{enumerate}
 
 \subsubsection{Token generation event}
@@ -293,14 +277,13 @@ Assuming that 2/3 of the total Aura Coins in the whole network are staked, our s
     timeline title={Aura Network Roadmap}]
     \textbf{2021} & -------- \textbf{Bootstrap \& Private Fundraising} -------- \endlr
     November & Establish project\endlr
-    December & Strategic Round\endlr
     \textbf{2022} & -------- \textbf{Establishing Infrastructure} --------\endlr
-    January & IEO Aura Token\endlr
+    Q1 & Strategic Round\endlr
     Q2 & Aura Testnet, Wallet, Explorer, Multi-signature Wallet, Smart Contract support, NFT contract.\endlr
-    Q3 & Aura Mainnet, Token migration from ETH, Governance Tool\endlr
+    Q3 & Aura Mainnet, Governance Tool, IBC enablement for native tokens\endlr
     Q4 & First NFT use case\endlr
     \textbf{2023} & -------- \textbf{Expanding the Network} --------\endlr
-    TBD & Bridge to ETH, Bridge to Hyperledger Fabric, Metaverse Integration\endlr
+    TBD & IBC for NFTs, Metaverse integration, game support\endlr
 \end{vtimeline}
 
 \bigskip
