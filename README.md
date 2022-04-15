@@ -4,4 +4,6 @@ This repository contains overleaf LATEX code for the Aura Network white paper. R
 
 ## Acknowledgement
 
-Many thanks to [@dinhnaocungdu](https://t.me/dinhnaocungdu) to point out mistakes regarding to BSC and ETH confusion on the TGE section
+Many thanks to some Telegram users in the Aura Network Official group to point out mistakes of the paper:
+
+- @dinhnaocungdu
