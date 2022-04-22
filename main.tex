@@ -12,7 +12,7 @@
 \addtolength{\headheight}{1.5cm} % make more space for the header
 \pagestyle{fancyplain} % use fancy for all pages except chapter start
 \fancyhf{} % clear header text chapter
-\rhead{\includegraphics[height=1.3cm,trim={5cm 2cm 5cm 2cm} ]{img/logo.png}} % right logo
+\rhead{\includegraphics[height=1.3cm,trim={0cm 1.5cm 8cm 1.5cm} ]{img/logo.png}} % right logo
 \rfoot{\thepage}
 \renewcommand{\headrulewidth}{0pt} % remove rule below header
 
@@ -129,32 +129,38 @@ Inter-Blockchain Communication Protocol (IBC) is the signature Cosmos module tha
 Bridge is also an important part of aurad. As Aura Network focuses on bridging assets to other blockchains even outside of the Cosmos SDK, bridge solutions that support ERC-20, BEP-20 tokens will be employed. We are in contact with some decentralized exchanges and bridge teams e.g. Impossible Finance to develop this component. 
 
 \subsection{Aura Network ecosystem}
-Figure~\ref{fig:auraeco} shows the potential building blocks of the Aura Network. At the moment, we divide the ecosystem into 6 main categories
+Figure~\ref{fig:auraeco} shows the building blocks of the Aura Network. At the moment, we divide the ecosystem into 4 main categories
 
 \begin{figure}[ht]
 \label{fig:auraeco}
-\includegraphics[width=14cm]{img/auraeco.png}
+\includegraphics[width=18cm, trim={5cm 3cm 0cm 2cm}]{img/auraeco.png}
 \centering
 \caption{The Aura eco-system}
 \end{figure}
 
 \subsubsection*{Infrastructure}
-The Infrastructure layer mostly refers to the blockchain platform that is mentioned above. Other than validators, Cosmos and Tendermint's best practices in running production software also include Seed, Sentry, Full and Light nodes. Details on the setup of these nodes are described in the Cosmos SDK documentation. We will also provide scripts and instructions on how to set up different types of nodes later on through Aura development documents.
+The Infrastructure layer mostly refers to the blockchain platform that is mentioned above. Other than validators, Cosmos and Tendermint's best practices in running production software also include Seed, Sentry, Full and Light nodes. Details on the setup of these nodes are described in the Cosmos SDK documentation. We will also provide scripts and instructions on how to set up different types of nodes later on through Aura development documents. The \emph{Aura Daemon} client, or \emph{aurad} refers to the application running Aura Network.
+Most of the provided Cosmos modules are included in aurad. Modifications to these modules are documented in the development docs.
 
-\subsubsection*{Middleware}
-The middleware layer contains Cosmos modules bundled together with aurad. As mentioned, most of the provided Cosmos modules are included. The Aura team also publishes modifications to these modules in the development docs as well.
-
-\subsubsection*{Smart Contract}
-The smart contract layer contains smart contracts written in Rust, compiled, and run on the CosmWasm module.
+\subsubsection*{Currency}
+There are 2 native currencies of the Aura ecosystem: Aura Coin and Aura Token on BNB Smart Chain. Details about these currencies are specified on the tokenomic section. Aura also supports creating CW20 tokens, similar to other blockchains that use CosmWasm module.
 
 \subsubsection*{Decentralized App}
-Decentralized Applications (DApps) are the main focus of the Aura Network. All business solutions are written here such as NFT Asset Management, Wallet, NFT Issuer, NFT evaluation, Exchange, Launchpad, Marketplace, etc. As Aura Network focuses on NFT businesses, the Aura team will take the lead in developing these DApps to attract all types of stakeholders as mentioned in the introduction section.
+Decentralized Applications (DApps) are the main focus of the Aura Network. These applications offer rich user experience in working with crypto currencies and NFT in general.
 
-\subsubsection*{Connector}
-The connector layer contains integration APIs, SDKs that are used to bring NFT assets to Metaverse networks. By itself, Aura Network does not provide a metaverse experience but provides infrastructures for bringing NFT assets to the metaverse.
+\begin{itemize}
+    \item \textbf{AuraScan}: the blockchain explorer with extra features for governing, staking, NFT, notifications, etc. that are tailored towards Aura holders. 
+    \item \textbf{NFT Hub}: one-stop destination for Aura community to interact with NFT and metaverse.
+    \item \textbf{Aura DEX}: decentralized exchange for CW-20 tokens building on Aura.
+    \item \textbf{Playground}: web-based smart contract IDE for developers, inspired by Ethereum Remix IDE.
+    \item \textbf{Bridge}: aura bridge for swapping assets between BSC and Aurachain.
+    \item \textbf{Marketplace}: NFT marketplace
+    \item \textbf{Launchpad}: Aura provides intensive supports both in terms of technology and funding, business promotion to NFT projects building on Aura chain
+    \item \textbf{Aura Safe}: Gnosis-safe inspired multisignature wallet.
+\end{itemize}
 
-\subsubsection*{Support Tools}
-This layer contains usual software tools that are mandatory to the Aura blockchain platform. That contains blockchain explorer, low code software development, development tools, OpenAPI, and Governance tools.
+\subsubsection*{Open API}
+The Open API layer contains integration APIs, SDKs that are used to bring NFT assets to Metaverse networks. By itself, Aura Network does not provide a metaverse experience but provides infrastructures for bringing NFT assets to the metaverse.
 
 \section{Tokenomics}
 
