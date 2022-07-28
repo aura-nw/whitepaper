@@ -184,14 +184,7 @@ Aura Coin is the native currency of the Aura Network blockchain platform. Beside
 \end{itemize}
 
 \subsection{Token Distribution}
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% \usepackage[table,xcdraw]{xcolor}
-% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
+
 % Please add the following required packages to your document preamble:
 % \usepackage{graphicx}
 % \usepackage[table,xcdraw]{xcolor}
@@ -199,27 +192,29 @@ Aura Coin is the native currency of the Aura Network blockchain platform. Beside
 \begin{table}[]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|l|l|l|l|l|}
+\begin{tabular}{|l|l|l|l|l|l|}
 \hline
 \rowcolor[HTML]{000000} 
-{\color[HTML]{FFFFFF} Token Allocation} & {\color[HTML]{FFFFFF} Allocation} & {\color[HTML]{FFFFFF} Aura} & {\color[HTML]{FFFFFF} TGE} & {\color[HTML]{FFFFFF} Vesting Schedule (monthly)} \\ \hline
-Ecosystem Growth                        & 20                                & 200M                        & 50                         & Linear vesting over 2 years                       \\ \hline
-Strategic                               & 10                                & 100M                        & 0                          & Linear vesting over 2 years                       \\ \hline
-Private sale                            & 5                                 & 50M                         & 0                          & Linear vesting over 2 years                     \\ \hline
-Strategic Reserve                       & 5                                 & 50M                         & 0                          & TBD                                               \\ \hline
-Public Distribution                     & 5                                 & 50M                         & 100                        & No vesting                                        \\ \hline
-Foundation Reserve                      & 10                                & 100M                        & 0                          & Linear vesting over 2 years                       \\ \hline
-Team                                    & 20                                & 200M                        & 0                          & 1 year cliff then linear vesting   over 3 years   \\ \hline
-Block Rewards                           & 25                                & 250M                        & 0                          & Rewards   for validator per block over 5 years.   \\ \hline
+{\color[HTML]{FFFFFF} \textbf{Token   Allocation}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Allocation   (\%)}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{\$AURA}}} & \multicolumn{1}{r|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{TGE}}} & \multicolumn{1}{r|}{\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} \textbf{Token TGE}}} & {\color[HTML]{FFFFFF} \textbf{Vesting Schedule (monthly)}} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Ecosystem   Growth \\ (ignore in circulating supply)\end{tabular} & 21.25\% & 212,500,000 & 30\% & 63,750,000 & linear   vesting over 2 years \\ \hline
+Ecosystem Growth - listing DEX & 1.75\% & 17,500,000 & 100\% & 17,500,000 & no vesting \\ \hline
+Strategic & 13.00\% & 130,000,000 & 0\% & 0 & linear   vesting over 2 years \\ \hline
+Private   Sale round 1 & 2.16\% & 21,600,000 & 2\% & 432,000 & linear   vesting over 2 years \\ \hline
+Private   Sale round 2 & 0.60\% & 5,957,500 & 5\% & 297,875 & linear   vesting over 2 years \\ \hline
+Block   Rewards & 25.00\% & 250,000,000 & 0\% & 0 & rewards over 5 years \\ \hline
+Team   and Advisors & 20.00\% & 200,000,000 & 0\% & 0 & 1 year cliff then linear vesting over 3 years \\ \hline
+Public   Distribution & 1.25\% & 12,538,462 & 100\% & 12,538,462 & no vesting \\ \hline
+\begin{tabular}[c]{@{}l@{}}Foundation   Reserves \\ (ignore in circulating supply)\end{tabular} & 14.99\% & 149,904,038 & 0\% & 0 & linear   vesting over 2 years \\ \hline
+\textbf{Total} & \textbf{100.00\%} & \textbf{1,000,000,000} & \textbf{} & \textbf{94,518,337} & \textbf{} \\ \hline
 \end{tabular}%
 }
-\label{tab:tokenomics}
+\caption{\label{tab:tokenomics}Aura Network tokenomics}
 \end{table}
 
 Table~\ref{tab:tokenomics} shows the token distribution metrics for Aura Network. The maximum amount of Aura that can be minted is exact \textbf{1 Billion} tokens. This value is specified in the Aura genesis block and cannot be changed in the future unless we do a hard fork. This is applied for both Aura Token on BSC and the Aura Coin as the token is simply just a placeholder. There are 6 categories that Aura coin will be allocated to:
 
 \subsubsection{Ecosystem Growth}
-20 percent of the total coin will be allocated to the ecosystem growth fund. This fund is used for ecosystem development such as project grants, bug bounties, attracting stakeholders to provide utility services, etc. Examples include, but are not limited, to the following: 
+23 percent of the total coin will be allocated to the ecosystem growth fund. This fund is used for ecosystem development such as project grants, bug bounties, attracting stakeholders to provide utility services, etc. Examples include, but are not limited, to the following: 
 
 \begin{enumerate}
 \item \textbf{Airdrop:} \\ 
@@ -235,13 +230,13 @@ Some tokens will be allocated to users who report bugs and propose fixes to the 
 \end{enumerate}
 
 \subsubsection{Strategic Fund Raising}
-20\% percent of the tokens go to private sales to strategic partners. They are invited to finance the project in an exchange for the token of a network, at a discount rate to compensate for the extra risk that they take in due to the projects being in the early stage. The strategic fund raising part is divided into Strategic Round, Private Sale Round and Strategic Reserve.
+20\% percent of the tokens go to private sales to strategic partners. They are invited to finance the project in an exchange for the token of a network, at a discount rate to compensate for the extra risk that they take in due to the projects being in the early stage. The strategic fund raising part is divided into Strategic Round, Private Sale Rounds. Leftover tokens from these rounds are merged to the foundation reserves pool.
  
 \subsubsection{Public distribution}
-5 percent of the tokens go to public sale. We are working with several centralized exchanges to launch an Initial Exchange Offering (IEO). We also plan to list in AURA to other Decentralized Exchanges (DEXs) to reach a wider range of investors. 
+We are working with several exchanges and launchpads to launch an Initial Exchange Offering (IEO) or an initial DEX offering (IDO). Aura is intended to be listed on both CEXs and DEXs to reach a wider range of investors. 
 
 \subsubsection{Foundation Reserve}
-10 percent of the total coin will be stored in the foundation treasury fund. It is supposed to be served as a “last-resort” in the case that the network requires funds to solve a particular problem that another source of funding (e.g Community Pooling) is not on the table. All decisions on how to spend the fund must go through a public governance proposal as outlined in the “Community Pool” subsection.
+The remaining of the total coin will be stored in the foundation treasury fund. It is supposed to be served as a “last-resort” in the case that the network requires funds to solve a particular problem that another source of funding (e.g Community Pooling) is not on the table. All decisions on how to spend the fund must go through a public governance proposal as outlined in the “Community Pool” subsection.
  
 \subsubsection{Team}
 20 percent of the total coin goes to the AURA team to incentivize the developer to expend their effort in building the network.
@@ -260,19 +255,6 @@ By the time of Aura Mainnet's release and the listing of Aura Coin, the Aura Tok
 Vesting refers to the process of locking a certain amount of coins or tokens then gradually releasing them with time. Other than public distribution coins, the rest of the token allocation categories are locked and vested on different terms. The vesting process for Aura Token and Aura Coin starts at the IEO event. Tokens or Coins are linearly unlocked every month based on the vesting schedule. 
 
 In Aura Mainnet, locked Tokens from Team and Strategic partners can still be delegated for staking and voting for governance. However, tokens in the ecosystem growth and foundation reserves are not available for delegation. 
-
-\subsubsection{Token release simulation}
-
-Figure~\ref{fig:release} shows a simple simulation of Aura token release schedule. Apart from the block reward category, the rest of the token allocation categories are straightforward to calculate based on their vesting schedule. The simulation file is located on our Github repository~\footnote{\url{https://github.com/aura-nw/whitepaper/tree/main/simulation}}.
-
-\begin{figure}[ht]
-\label{fig:release}
-\includegraphics[width=\textwidth]{img/release.png}
-\centering
-\caption{Simulation of aura release schedule}
-\end{figure}
-
-Assuming that 2/3 of the total Aura Coins in the whole network are staked, our simulation shows that with an average of 8\% inflation per year, we can fully distribute all 250 millions to validators within 5 years (60 months).
 
 \section{Roadmap}
 
